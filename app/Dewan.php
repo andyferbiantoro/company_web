@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DewanDireksi extends Model
+class Dewan extends Model
 {
-    protected $table = "dewan_direksi";
+    protected $table = "dewan";
    protected $fillable = [
      'nama','jabatan','deskripsi','image','path'
  ];

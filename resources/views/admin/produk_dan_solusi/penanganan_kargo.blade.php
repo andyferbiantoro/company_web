@@ -39,7 +39,6 @@ Penganganan Kargo (Bongkar Muat Barang)
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Deskripsi</th>
-                        <th scope="col">Foto</th>
                         <th scope="col">Aksi</th>
                         <th style="display: none;">hidden</th>
                       </tr>
@@ -51,7 +50,7 @@ Penganganan Kargo (Bongkar Muat Barang)
                         <td scope="row">{{$no++}}</td>
                         <td scope="row">{{$data->nama_layanan}}</td>
                         <td scope="row">{{$data->deskripsi}}</td>
-                        <td scope="row"><img height="70" id="myImg" src="{{asset('uploads/produk_dan_solusi/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
+                        
                         <td> 
                           <button class="btn btn-success btn-sm fa fa-edit edit" title="Edit"></button>
 
@@ -59,6 +58,9 @@ Penganganan Kargo (Bongkar Muat Barang)
                             <button class="btn btn-danger btn-sm fa fa-trash" title="Hapus"></button>
                           </a>
 
+                          <a href="{{route('admin_detail_produk_dan_solusi', ['id' => $data->id])}}">
+                            <button class="btn btn-warning btn-sm fa fa-eye" title="Lihat Detail"></button>
+                          </a>
 
                         </td>
 

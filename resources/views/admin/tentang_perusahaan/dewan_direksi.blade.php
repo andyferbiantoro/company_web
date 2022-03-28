@@ -16,7 +16,7 @@ Dewan Direksi
                 <div class="card-body">
                  <!-- Button trigger modal -->
                  <button type="button" class="btn btn-success " data-toggle="modal" data-target="#ModalTambahPengumuman">
-                  Tambah Dewan Ditreksi
+                  Tambah Dewan Direksi
                 </button><br><br>
                 @if (session('success'))
                 <div class="alert alert-success">
@@ -49,7 +49,7 @@ Dewan Direksi
                         <td scope="row">{{$data->nama}}</td>
                         <td scope="row">{{$data->jabatan}}</td>
                         <td scope="row">{{$data->deskripsi}}</td>
-                        <td scope="row"><img height="70" id="myImg" src="{{asset('uploads/dewan_direksi/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
+                        <td scope="row"><img height="70" id="myImg" src="{{asset('uploads/dewan/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
                         <td> 
                           <button class="btn btn-success btn-sm fa fa-edit edit" title="Edit"></button>
 
@@ -97,6 +97,10 @@ Dewan Direksi
                 <div class="form-group">
                   <label for="deskripsi">Deskripsi</label>
                   <input type="text" class="form-control" id="deskripsi" name="deskripsi" required=""></input>
+                </div>
+
+                <div class="form-group">
+                  <input type="hidden" class="form-control" id="jenis" name="jenis" value="direksi" />
                 </div>
 
                 <div class="form-group">

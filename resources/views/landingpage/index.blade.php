@@ -18,7 +18,7 @@ Beranda
                 <section class="cd-intro">
                     <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
                     <span>PT. MAHAKARYA TATA ALAM</span><br>
-                    <span class="cd-words-wrapper">
+                    <span class="cd-words-wrapper"  style="color: #0209d5;">
                         <b class="is-visible">KONSTRUKSI JALAN RAYA</b>
                         <b>PENYIAPAN LAHAN</b>
                         <b>PERDAGANGAN BESAR BERBAGAI MACAM MATERIAL BANGUNAN</b>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Komitmen Perusahaan
+Detail Produk Dan Solusi
 @endsection
 
 
@@ -11,15 +11,15 @@ Komitmen Perusahaan
  <div class="col-lg-12">
   <div class="card">
                 <div class="card-header">
-                  <h4>Komitmen Perusahaan</h4>
+                  <h4>Detail Produk Dan Solusi</h4>
                 </div>
                 <div class="card-body">
                  <!-- Button trigger modal -->
-                  @if($count == 0) 
+                 @if($count == 0) 
                  <button type="button" class="btn btn-success " data-toggle="modal" data-target="#ModalTambahPengumuman">
-                  Tambah Komitmen Perusahaan
+                  Tambah Foto
                 </button><br><br>
-                 @endif
+                @endif
 
                 @if (session('success'))
                 <div class="alert alert-success">
@@ -32,29 +32,41 @@ Komitmen Perusahaan
                 </div>
                 @endif
                 <div class="table-responsive">
+                  
+                      @foreach($detail_produk_dan_solusi as $data)
+                     <table class="table table-hover">
+                      <tr>
+                        <th>Nama Produk Dan Solusi</th>
+                        <th>:</th>
+                        <td>{{$data->nama_layanan}}</td>
+                      </tr> 
+
+                      <tr>
+                        <th>Deskripsi</th>
+                        <th>:</th>
+                        <td>{{$data->deskripsi}}</td>
+                      </tr> 
+
+
+                    </table>
+                   @endforeach 
+                </div>
+
+                <div class="table-responsive">
                   <table id="dataTable" class="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Tata Kelola Perusahaan</th>
-                        <th scope="col">Tanggung Jawab Sosial</th>
-                        <th scope="col">Sertifikat</th>
-                        <th scope="col">Foto Tata Kelola Perusahaan</th>
-                        <th scope="col">Foto Tanggung Jawab Sosial</th>
-                        <th scope="col">Aksi</th>
+                        <th style="text-align: center; vertical-align: middle;">Foto</th>
+                        <th style="text-align: center; vertical-align: middle;">Aksi</th>
                         <th style="display: none;">hidden</th>
                       </tr>
                     </thead>
                     <tbody>
                       @php $no=1 @endphp
-                      @foreach($komitmen_kami as $data)
+                      @foreach($image_produk as $data)
                       <tr>
-                        <td scope="row">{{$no++}}</td>
-                        <td scope="row">{{$data->tata_kelola}}</td>
-                        <td scope="row">{{$data->tanggung_jawab}}</td>
-                        <td scope="row"><img height="70" id="myImg" src="{{asset('uploads/komitmen_kami/'.$data->sertifikat)}}"  data-toggle="modal" data-target="#myModal"></img></td>
-                        <td scope="row"><img height="70" id="myImg" src="{{asset('uploads/komitmen_kami/'.$data->image_tata_kelola)}}"  data-toggle="modal" data-target="#myModal"></img></td>
-                        <td scope="row"><img height="70" id="myImg" src="{{asset('uploads/komitmen_kami/'.$data->image_tanggung_jawab)}}"  data-toggle="modal" data-target="#myModal"></img></td>
+                       
+                        <td scope="row"><img height="70" id="myImg" src="{{asset('uploads/produk_dan_solusi/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
                         <td> 
                           <button class="btn btn-success btn-sm fa fa-edit edit" title="Edit"></button>
 
@@ -62,6 +74,7 @@ Komitmen Perusahaan
                             <button class="btn btn-danger btn-sm fa fa-trash" title="Hapus"></button>
                           </a>
 
+                         
 
                         </td>
 
@@ -72,10 +85,14 @@ Komitmen Perusahaan
                     </tbody>
                   </table>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
+
+
+      
 
 
         <!-- Modal -->
@@ -83,46 +100,28 @@ Komitmen Perusahaan
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Komitmen Perusahaan</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Penyewaan Alat Berat</h5>
 
               </div>
               <div class="modal-body">
-               <form method="post" action="{{route('admin_komitmen_kami_add')}}" enctype="multipart/form-data">
+               <form method="post" action="{{route('admin_image_layanan_add')}}" enctype="multipart/form-data">
 
 
                 {{csrf_field()}}
-               
-                <div class="form-group">
-                  <label for="tata_kelola">Tata Kelola Perusahaan</label>
-                  <input type="text" class="form-control" id="tata_kelola" name="tata_kelola" required=""></input>
-                </div>
+                
 
                 <div class="form-group">
-                  <label for="image_tata_kelola">Upload Foto Tata Kelola Perusahaan</label>
-                  <input type="file" class="form-control" id="image_tata_kelola" name="image_tata_kelola" required=""></input>
+                  <label for="image">Foto</label>
+                  <input type="file" class="form-control" id="image" name="image" required=""></input>
                 </div>
 
-                <div class="form-group">
-                  <label for="tanggung_jawab">Tanggung Jawab Sosial</label>
-                  <input type="text" class="form-control" id="tanggung_jawab" name="tanggung_jawab" required=""></input>
-                </div>
-
-                <div class="form-group">
-                  <label for="image_tanggung_jawab">Upload Foto Tanggung Jawab Sosial</label>
-                  <input type="file" class="form-control" id="image_tanggung_jawab" name="image_tanggung_jawab" required=""></input>
-                </div>
+                 @foreach($image_produk as $id_layanan)
+              <div class="form-group">
+                <input type="hidden" class="form-control" id="id_layanan" name="id_layanan" value="{{$id_layanan->id_layanan}}" />
+              </div>
+              @endforeach
 
 
-                <div class="form-group">
-                  <label for="sertifikat">Upload Sertifikat</label>
-                  <input type="file" class="form-control" id="sertifikat" name="sertifikat" required=""></input>
-                </div>
-
-
-
-                <div class="form-group">
-                  <input type="hidden" class="form-control" id="id_prodi" name="id_prodi" value="{{ Auth::user()->id_prodi }}" />
-                </div>
 
                 <button class="btn btn-primary" type="Submit">Tambahkan</button>
               </form>
@@ -144,7 +143,7 @@ Komitmen Perusahaan
          <form action="" id="updateInformasiform" method="post" enctype="multipart/form-data">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Anda yakin ingin memperbarui Data ini ?</h5>
+              <h5 class="modal-title">Anda yakin ingin memperbarui Data Menu ini ?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -153,32 +152,15 @@ Komitmen Perusahaan
               {{ csrf_field() }}
               {{ method_field('POST') }}
 
+              
+
+              <div class="form-group">
+                <label for="image">Foto</label>
+                <input type="file" class="form-control" id="image_update" name="image"></input>
+              </div>
+
              
 
-              <div class="form-group">
-                <label for="tata_kelola">Tata Kelola Perusahaan</label>
-                <input type="text" class="form-control" id="tata_kelola_update" name="tata_kelola" required=""></input>
-              </div>
-
-              <div class="form-group">
-                  <label for="image_tata_kelola">Upload Foto Tata Kelola Perusahaan</label>
-                  <input type="file" class="form-control" id="image_tata_kelola_update" name="image_tata_kelola" required=""></input>
-                </div>
-
-              <div class="form-group">
-                <label for="tanggung_jawab">Tanggung Jawab Sosial</label>
-                <input type="text" class="form-control" id="tanggung_jawab_update" name="tanggung_jawab" required=""></input>
-              </div>
-
-              <div class="form-group">
-                  <label for="image_tanggung_jawab">Upload Foto Tanggung Jawab Sosial</label>
-                  <input type="file" class="form-control" id="image_tanggung_jawab_update" name="image_tanggung_jawab" required=""></input>
-                </div>
-
-              <div class="form-group">
-                <label for="sertifikat">Upload Sertifikat</label>
-                <input type="file" class="form-control" id="sertifikat_update" name="sertifikat"></input>
-              </div>
 
               <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Batal</button>
               <button type="submit"  class="btn btn-primary float-right mr-2" >Perbarui</button>
@@ -237,7 +219,7 @@ Komitmen Perusahaan
 <script type="text/javascript">
   function deleteData(id) {
     var id = id;
-    var url = '{{route("admin_komitmen_kami_delete", ":id") }}';
+    var url = '{{route("admin_image_layanan_delete", ":id") }}';
     url = url.replace(':id', id);
     $("#deleteForm").attr('action', url);
   }
@@ -258,9 +240,8 @@ Komitmen Perusahaan
       }
       var data = table.row($tr).data();
       console.log(data);
-      $('#tata_kelola_update').val(data[1]);
-      $('#tanggung_jawab_update').val(data[2]);
-      $('#updateInformasiform').attr('action','admin_komitmen_kami_update/'+ data[7]);
+     
+      $('#updateInformasiform').attr('action','admin_image_layanan_update/'+ data[5]);
       $('#updateInformasi').modal('show');
     });
   });

@@ -45,6 +45,7 @@ Profil Perusahaan
                         <th scope="col">Modal</th>
                         <th scope="col">No Telp</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Foto</th>
                         <th scope="col">Aksi</th>
                         <th style="display: none;">modal hidden</th>
                         <th style="display: none;">hidden</th>
@@ -64,6 +65,8 @@ Profil Perusahaan
                         <td scope="row">Rp. <?=number_format($data->modal, 0, ".", ".")?>,00</td>
                         <td scope="row">{{$data->no_telp}}</td>
                         <td scope="row">{{$data->email}}</td>
+                        <td scope="row"><img height="70" id="myImg" src="{{asset('uploads/profil_perusahaan/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
+                       
                         <td> 
                           <button class="btn btn-success btn-sm fa fa-edit edit" title="Edit"></button>
 
@@ -148,7 +151,8 @@ Profil Perusahaan
                 </div>
 
                 <div class="form-group">
-                  <input type="hidden" class="form-control" id="id_prodi" name="id_prodi" value="{{ Auth::user()->id_prodi }}" />
+                  <label for="image">Foto</label>
+                  <input type="file" class="form-control" id="image" name="image"  required=""></input>
                 </div>
 
                 <button class="btn btn-primary" type="Submit">Tambah Profil</button>
@@ -229,6 +233,11 @@ Profil Perusahaan
                   <input type="email" class="form-control" id="email_update" name="email" required=""></input>
                 </div>
 
+                <div class="form-group">
+                  <label for="image">Foto</label>
+                  <input type="file" class="form-control" id="image" name="image"  required=""></input>
+                </div>
+
 
               <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Batal</button>
               <button type="submit"  class="btn btn-primary float-right mr-2" >Perbarui</button>
@@ -265,6 +274,22 @@ Profil Perusahaan
 
   </div>
 
+
+  <!-- Creates the bootstrap modal where the image will appear -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="" id="img01" style="width: 450px; height: auto;" >
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 @endsection
 
 @section('scripts')
@@ -298,10 +323,10 @@ Profil Perusahaan
       $('#lokasi_update').val(data[4]);
       $('#luas_lahan_update').val(data[5]);
       $('#luas_bangunan_update').val(data[6]);
-      $('#modal_update').val(data[11]);
+      $('#modal_update').val(data[12]);
       $('#no_telp_update').val(data[8]);
       $('#email_update').val(data[9]);
-      $('#updateInformasiform').attr('action','admin_profil_perusahaan_update/'+ data[12]);
+      $('#updateInformasiform').attr('action','admin_profil_perusahaan_update/'+ data[13]);
       $('#updateInformasi').modal('show');
     });
   });

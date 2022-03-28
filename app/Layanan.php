@@ -8,6 +8,6 @@ class Layanan extends Model
 {
     protected $table = "layanan";
     protected $fillable = [
-       'nama_layanan','jenis','deskripsi','image','path'
+       'nama_layanan','jenis','status','deskripsi','image1','image2','image3','image4'
    ];
 }

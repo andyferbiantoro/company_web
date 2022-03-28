@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2022 at 10:59 AM
+-- Generation Time: Mar 28, 2022 at 11:49 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -24,26 +24,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dewan_direksi`
+-- Table structure for table `dewan`
 --
 
-CREATE TABLE `dewan_direksi` (
+CREATE TABLE `dewan` (
   `id` int(11) NOT NULL,
   `nama` varchar(225) NOT NULL,
   `jabatan` varchar(100) NOT NULL,
   `deskripsi` text DEFAULT NULL,
+  `jenis` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
   `path` text NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `dewan_direksi`
+-- Table structure for table `image_layanan`
 --
 
-INSERT INTO `dewan_direksi` (`id`, `nama`, `jabatan`, `deskripsi`, `image`, `path`, `created_at`, `updated_at`) VALUES
-(2, 'Ridwan', 'Direktur', 'Direktur Perusahaan', 'Basic_Ui__28186_29.jpg', 'public/uploads/dewan_direksi/c5gsoaWnxcjy7tLXNEcMKEwxddSKCtrPwcpOrM4Z.jpg', '2022-03-01 03:31:24', '2022-03-07 01:50:03');
+CREATE TABLE `image_layanan` (
+  `id` int(11) NOT NULL,
+  `id_layanan` int(11) NOT NULL,
+  `indeks` int(11) NOT NULL DEFAULT 1,
+  `image` varchar(225) NOT NULL,
+  `path` varchar(225) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -56,6 +66,8 @@ CREATE TABLE `komitmen` (
   `sertifikat` varchar(225) NOT NULL,
   `tata_kelola` text NOT NULL,
   `tanggung_jawab` text NOT NULL,
+  `image_tata_kelola` varchar(225) NOT NULL,
+  `image_tanggung_jawab` varchar(225) NOT NULL,
   `path` text NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -65,8 +77,8 @@ CREATE TABLE `komitmen` (
 -- Dumping data for table `komitmen`
 --
 
-INSERT INTO `komitmen` (`id`, `sertifikat`, `tata_kelola`, `tanggung_jawab`, `path`, `created_at`, `updated_at`) VALUES
-(1, 'sertifikat.jpg', 'isikan tata kelola perusahaan', 'isikan tanggung jawab sosial', 'public/uploads/komitmen_kami/D6h1nQGe3gXgycGLzYRKY2mZUTDrIVaJc64eURrK.jpg', '2022-03-06 02:46:27', '2022-03-07 01:51:10');
+INSERT INTO `komitmen` (`id`, `sertifikat`, `tata_kelola`, `tanggung_jawab`, `image_tata_kelola`, `image_tanggung_jawab`, `path`, `created_at`, `updated_at`) VALUES
+(1, 'sertifikat.jpg', 'isikan tata kelola perusahaan', 'isikan tanggung jawab sosial', 'eskavator.jpeg', 'alat_berat2.jpg', 'public/uploads/komitmen_kami/D6h1nQGe3gXgycGLzYRKY2mZUTDrIVaJc64eURrK.jpg', '2022-03-06 02:46:27', '2022-03-28 09:47:59');
 
 -- --------------------------------------------------------
 
@@ -79,18 +91,10 @@ CREATE TABLE `layanan` (
   `nama_layanan` varchar(225) NOT NULL,
   `jenis` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
-  `image` varchar(225) NOT NULL,
-  `path` varchar(225) NOT NULL,
+  `status` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `layanan`
---
-
-INSERT INTO `layanan` (`id`, `nama_layanan`, `jenis`, `deskripsi`, `image`, `path`, `created_at`, `updated_at`) VALUES
-(8, 'eskavator', '1', 'anda dapat menyewa alat berat di berupa exkavator', 'eskavator.jpeg', 'public/uploads/produk_dan_solusi/EkksoGWAR2sOF4ZbD4HMwJCXmBvroaOxsJIMlJvk.jpg', '2022-03-05 04:34:45', '2022-03-05 04:34:45');
 
 -- --------------------------------------------------------
 
@@ -109,6 +113,7 @@ CREATE TABLE `profil_perusahaan` (
   `modal` bigint(30) NOT NULL,
   `no_telp` varchar(100) NOT NULL,
   `email` varchar(225) NOT NULL,
+  `image` varchar(225) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -117,8 +122,8 @@ CREATE TABLE `profil_perusahaan` (
 -- Dumping data for table `profil_perusahaan`
 --
 
-INSERT INTO `profil_perusahaan` (`id`, `nama_perusahaan`, `deskripsi`, `didirikan`, `lokasi`, `luas_lahan`, `luas_bangunan`, `modal`, `no_telp`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'PT. Mahakarya Tata Alam', 'ini adalah PT yang berdiri pada tanggal 8 maret 2020 serta bergerak di bidang penyewaan alat berat serta untuk pembukaan lahan pertanian serta melakukan penjualan material bangunan berskala besar', '08 Maret 2020', 'Jl. Utama No. 5, Kec Tualang, Siak, Provinsi Riau', '20.000 M', '400 M', 10000000000, '+6285271786999', 'ptmahakaryatataalam@gmail.com', '2022-03-03 09:03:20', '2022-03-03 09:07:24');
+INSERT INTO `profil_perusahaan` (`id`, `nama_perusahaan`, `deskripsi`, `didirikan`, `lokasi`, `luas_lahan`, `luas_bangunan`, `modal`, `no_telp`, `email`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'PT. Mahakarya Tata Alam', 'ini adalah PT yang berdiri pada tanggal 8 maret 2020 serta bergerak di bidang penyewaan alat berat serta untuk pembukaan lahan pertanian serta melakukan penjualan material bangunan berskala besar', '08 Maret 2020', 'Jl. Utama No. 5, Kec Tualang, Siak, Provinsi Riau', '20.000 M', '400 M', 10000000000, '+6285271786999', 'ptmahakaryatataalam@gmail.com', 'construction.webp', '2022-03-03 09:03:20', '2022-03-28 08:56:17');
 
 -- --------------------------------------------------------
 
@@ -168,9 +173,15 @@ INSERT INTO `visi_misi` (`id`, `visi`, `misi`, `created_at`, `updated_at`) VALUE
 --
 
 --
--- Indexes for table `dewan_direksi`
+-- Indexes for table `dewan`
 --
-ALTER TABLE `dewan_direksi`
+ALTER TABLE `dewan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `image_layanan`
+--
+ALTER TABLE `image_layanan`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -208,10 +219,16 @@ ALTER TABLE `visi_misi`
 --
 
 --
--- AUTO_INCREMENT for table `dewan_direksi`
+-- AUTO_INCREMENT for table `dewan`
 --
-ALTER TABLE `dewan_direksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `dewan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `image_layanan`
+--
+ALTER TABLE `image_layanan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `komitmen`
@@ -223,7 +240,7 @@ ALTER TABLE `komitmen`
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `profil_perusahaan`

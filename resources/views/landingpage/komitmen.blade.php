@@ -9,7 +9,7 @@ Komitmen Kami
 
 
 
-<section class="global-page-header">
+<section class="global-page-header"  style="background: #0209d5;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -72,13 +72,13 @@ Komitmen Kami
 <section class="company-description">
     <div class="container">
         <div class="row">
+            @foreach($komitmen_kami as $data)
             <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s" >
-                <img src="images/about/about-company.jpg" alt="" class="img-fluid">
+                <img src="{{asset('uploads/komitmen_kami/'.$data->image_tata_kelola)}}" alt="" class="img-fluid">
             </div>
             <div class="col-md-6">
                 <div class="block">
                     <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">TATA KELOLA PERUSAHAAN</h3>
-                    @foreach($komitmen_kami as $data)
                     <p  class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
                         {{$data->tata_kelola}}
                     </p>
@@ -105,12 +105,12 @@ Komitmen Kami
                     <p  class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
                         {{$data->tanggung_jawab}}
                     </p>
-                    @endforeach
                 </div>
             </div>
             <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s" >
-                <img src="images/about/about-company.jpg" alt="" class="img-fluid">
+                <img src="{{asset('uploads/komitmen_kami/'.$data->image_tanggung_jawab)}}" alt="" class="img-fluid">
             </div>
+            @endforeach
         </div>
     </div>
 </section>

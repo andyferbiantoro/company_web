@@ -15,11 +15,11 @@ Penyewaan Alat Berat
                 </div>
                 <div class="card-body">
                  <!-- Button trigger modal -->
-                 @if($count == 0) 
+                 
                  <button type="button" class="btn btn-success " data-toggle="modal" data-target="#ModalTambahPengumuman">
                   Tambah Alat Berat
                 </button><br><br>
-                @endif
+               
 
                 @if (session('success'))
                 <div class="alert alert-success">
@@ -38,7 +38,6 @@ Penyewaan Alat Berat
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Deskripsi</th>
-                        <th scope="col">Foto</th>
                         <th scope="col">Aksi</th>
                         <th style="display: none;">hidden</th>
                       </tr>
@@ -50,7 +49,7 @@ Penyewaan Alat Berat
                         <td scope="row">{{$no++}}</td>
                         <td scope="row">{{$data->nama_layanan}}</td>
                         <td scope="row">{{$data->deskripsi}}</td>
-                        <td scope="row"><img height="70" id="myImg" src="{{asset('uploads/produk_dan_solusi/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
+                       
                         <td> 
                           <button class="btn btn-success btn-sm fa fa-edit edit" title="Edit"></button>
 
@@ -58,6 +57,9 @@ Penyewaan Alat Berat
                             <button class="btn btn-danger btn-sm fa fa-trash" title="Hapus"></button>
                           </a>
 
+                          <a href="{{route('admin_detail_produk_dan_solusi', ['id' => $data->id])}}">
+                            <button class="btn btn-warning btn-sm fa fa-eye" title="Lihat Detail"></button>
+                          </a>
 
                         </td>
 
@@ -72,7 +74,7 @@ Penyewaan Alat Berat
             </div>
           </div>
         </div>
-
+        
 
         <!-- Modal -->
         <div class="modal fade" id="ModalTambahPengumuman" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -103,8 +105,10 @@ Penyewaan Alat Berat
 
                 <div class="form-group">
                   <label for="image">Foto</label>
-                  <input type="file" class="form-control" id="image" name="image" required=""></input>
+                  <input type="file" class="form-control" id="image" name="image"  required=""></input>
                 </div>
+
+                
 
 
 

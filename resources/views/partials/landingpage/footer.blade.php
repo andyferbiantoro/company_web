@@ -1,4 +1,4 @@
-<section id="call-to-action">
+<section id="call-to-action"  style="background: #0209d5;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -6,7 +6,7 @@
                     <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">BAGAIMANA MENURUT ANDA ?</h1>
                         <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">
                         @foreach($no_telp_perusahaan as $no_telp)
-                        <a href="https://api.whatsapp.com/send?phone={{$no_telp}}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Hubungi Kami</a>
+                        <a href="https://api.whatsapp.com/send?phone={{$no_telp}}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms" >Hubungi Kami</a>
                         @endforeach
                     </div>
                 </div>
@@ -14,6 +14,7 @@
             </div>
         </div>
     </section>
+
 
 <footer id="footer">
                 <div class="container">

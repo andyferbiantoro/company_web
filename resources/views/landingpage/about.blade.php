@@ -9,7 +9,7 @@ Tentang Kami
 
 
 
-  <section class="global-page-header">
+  <section class="global-page-header"  style="background: #0209d5;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -38,13 +38,13 @@ Tentang Kami
 <section class="company-description">
     <div class="container">
         <div class="row">
+                    @foreach($profil_perusahaan as $profil)
             <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s" >
-                <img src="images/about/about-company.jpg" alt="" class="img-fluid">
+                <img src="{{asset('uploads/profil_perusahaan/'.$profil->image)}}" alt="" class="img-fluid">
             </div>
             <div class="col-md-6">
                 <div class="block">
                     <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">KENAPA HARUS BERSAMA KAMI</h3>
-                    @foreach($profil_perusahaan as $profil)
                     <p  class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
                         {{$profil->deskripsi}}
                     </p>
@@ -116,85 +116,6 @@ Tentang Kami
 
 
 
-<!-- 
-================================================== 
-    Company Feature Section Start
-================================================== -->
-<!-- <section class="about-feature clearfix">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="subtitle text-center">Komitmen Kami</h2>
-            </div>
-            <div class="col-lg-4 px-0">
-                <div class="block about-feature-1 wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">
-                    <h2>
-                    Sertifikat perusahaan
-                    </h2>
-                    <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4 px-0">
-                <div class="block about-feature-2 wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
-                    <h2 class="item_title">
-                    Tata kelola perusahaan
-                    </h2>
-                    <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4 px-0">
-                <div class="block about-feature-3 wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".7s">
-                    <h2 class="item_title">
-                    Tanggung jawab sosia
-                    </h2>
-                    <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-
-<!-- 
-================================================== 
-    Team Section Start
-================================================== -->
-<section id="team">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="subtitle text-center">Dewan Direksi</h2>
-            </div>
-
-            @foreach($dewan_direksi as $dewan)
-            <div class="col-md-3 col-sm-6">
-                <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
-                    <div class="team-img">
-                        <img src="{{asset('uploads/dewan_direksi/'.$dewan->image)}}" class="team-pic" alt="">
-                    </div>
-                    <h3 class="team_name">{{$dewan->nama}}</h3>
-                    <p class="team_designation">{{$dewan->jabatan}}</p>
-                    <p class="team_text">{{$dewan->deskripsi}} </p>
-                   <!--  <p class="social-icons">
-                        <a href="#" class="facebook" target="_blank"><i class="ion-social-facebook-outline"></i></a>
-                        <a href="#" target="_blank"><i class="ion-social-twitter-outline"></i></a>
-                        <a href="#" target="_blank"><i class="ion-social-linkedin-outline"></i></a>
-                        <a href="#" target="_blank"><i class="ion-social-googleplus-outline"></i></a>
-                    </p> -->
-                </div>
-            </div>
-            @endforeach
-           
-           
-        </div>
-    </div>
-</section>
 
 
 

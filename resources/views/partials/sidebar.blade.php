@@ -1,7 +1,7 @@
 <aside id="sidebar-wrapper">
     <br>
     <div class="sidebar-brand">
-         <img src="../images/logo.jpeg" alt="logo" style="width: 70px; height: auto;">
+         <img src="../public/images/logo.jpeg" alt="logo" style="width: 70px; height: auto;">
     </div>
     <br><br><br>
     <ul class="sidebar-menu">
@@ -14,6 +14,7 @@
             <ul class="dropdown-menu">
               <li><a class="{{(request()->is('admin_visi_misi')) ? 'active' : ''}}" href="{{ route('admin_visi_misi') }}">Visi Misi</a></li>
               <li><a class="{{(request()->is('admin_dewan_direksi')) ? 'active' : ''}}" href="{{ route('admin_dewan_direksi') }}">Dewan Direksi</a></li>
+               <li><a class="{{(request()->is('admin_dewan_komisaris')) ? 'active' : ''}}" href="{{ route('admin_dewan_komisaris') }}">Dewan Komisaris</a></li>
               <li><a class="nav-link" href="{{ route('admin_profil_perusahaan') }}">Profil Perusahaan</a></li>
               <li><a class="nav-link" href="{{ route('admin_komitmen_kami') }}">Komitmen Perusahaan</a></li>
           </ul>
