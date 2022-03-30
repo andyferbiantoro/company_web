@@ -102,7 +102,7 @@ Penyiapan Lahan
                
                 <div class="form-group">
                   <label for="deskripsi">Deskripsi</label>
-                  <input type="text" class="form-control" id="deskripsi" name="deskripsi" required=""></input>
+                  <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" required=""></textarea>
                 </div>
 
                 <div class="form-group">
@@ -154,7 +154,7 @@ Penyiapan Lahan
 
               <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
-                <input type="text" class="form-control" id="deskripsi_update" name="deskripsi" required=""></input>
+                <textarea type="text" class="form-control" id="deskripsi_update" name="deskripsi" required=""></textarea>
               </div>
 
               <div class="form-group">
