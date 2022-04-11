@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth', 'admin']],function(){
     Route::post('/admin_visi_misi_delete/{id}', 'AdminController@admin_visi_misi_delete')->name('admin_visi_misi_delete');
 
 
+
     Route::get('/admin_dewan_direksi', 'AdminController@admin_dewan_direksi')->name('admin_dewan_direksi');
     Route::post('/admin_dewan_direksi_add', 'AdminController@admin_dewan_direksi_add')->name('admin_dewan_direksi_add');
     Route::post('/admin_dewan_direksi_update/{id}', 'AdminController@admin_dewan_direksi_update')->name('admin_dewan_direksi_update');

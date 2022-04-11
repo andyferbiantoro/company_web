@@ -47,21 +47,26 @@ About Section Start
         
         <div class="row">
             <div class="col-md-6 col-sm-6">
-                @foreach($visi_misi as $vis)
                 <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
                     <h2>
                     Visi Misi Kami
                     </h2>
                         <h5>Visi</h5>
-                    <p>
-                       {{$vis->visi}}
-                    </p>
+                    @php $no=1 @endphp
+                    @foreach($visi_misi as $vis)
+                        @if($vis->visi != null)
+                           {{$no++}}. {{$vis->visi}}<br>
+                        @endif
+                    @endforeach
+                    <br>
                     <h5>Misi</h5>
-                    <p>
-                         {{$vis->misi}}
-                    </p>
+                    @php $no=1 @endphp
+                    @foreach($visi_misi as $mis)
+                        @if($mis->misi != null)
+                         {{$no++}}. {{$mis->misi}}<br>
+                        @endif
+                     @endforeach
                 </div>
-                @endforeach
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="block wow fadeInRight" data-wow-delay=".3s" data-wow-duration="500ms">
